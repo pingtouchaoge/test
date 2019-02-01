@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <h1 class="h1">koa2 simple static server</h1>
+    <img src="/image/nodejs.jpg" />
+    <script>
+        var xhr= new XMLHttpRequest(),
+            method = "GET",
+            url = "/api/user";
+
+        xhr.open(method, url, true);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                console.log(xhr.responseText)
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+</html>

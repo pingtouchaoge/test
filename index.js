@@ -5,6 +5,11 @@ const { connect, initSchemas }  = require('./database/init');
 const bofyParser = require('koa-bodyparser');
 const router = require('./router/index');
 const path = require('path');
+
+const static = require('koa-static')
+// 静态资源目录对于相对入口文件index.js的路径
+const staticPath = './static'
+
 app.use(bofyParser());
 
 
@@ -12,7 +17,6 @@ app.use(bofyParser());
 // 加载路由中间件
 app.use(router.routes());
 app.use(router.allowedMethods());
-
 
 // 立即执行函数
 ;(async ()=>{
@@ -25,6 +29,12 @@ app.use(views(path.join(__dirname, './view'), {
     extension: 'ejs'
 }))
 
+
+
+
+app.use(static(
+    path.join( __dirname,  staticPath)
+))
 
 app.use(async (ctx)=>{
     // ctx.body = `<h1>Hello Koa2</h1>`
