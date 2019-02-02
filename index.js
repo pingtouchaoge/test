@@ -24,17 +24,14 @@ app.use(router.allowedMethods());
     initSchemas(); // 载入 schema 文件
 })();
 
+app.use(static(
+    path.join( __dirname,  staticPath)
+))
+
 // 加载模板引擎
 app.use(views(path.join(__dirname, './view'), {
     extension: 'ejs'
 }))
-
-
-
-
-app.use(static(
-    path.join( __dirname,  staticPath)
-))
 
 app.use(async (ctx)=>{
     // ctx.body = `<h1>Hello Koa2</h1>`

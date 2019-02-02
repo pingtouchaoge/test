@@ -15,6 +15,7 @@
 
         xhr.open(method, url, true);
         xhr.onreadystatechange = function () {
+            console.log(xhr.readyState)
             if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log(xhr.responseText)
             }
